@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zaika Solutions Ltd - Affordable, scalable and cloud-ready software solutions for businesses modernizing legacy systems." />
+  <title>Zaika Solutions Ltd | Modern Software Solutions</title>
+
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --surface:#ffffff;
+      --text:#14213d;
+      --muted:#5f6b7a;
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --accent:#14b8a6;
+      --border:#e5eaf1;
+      --shadow:0 18px 45px rgba(20,33,61,.10);
+      --radius:20px;
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),92%);margin:auto}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      font-size:1.15rem;
+      letter-spacing:-.02em;
+    }
+    .logo-mark{
+      width:40px;height:40px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;font-weight:900;
+      box-shadow:0 8px 20px rgba(37,99,235,.25);
+    }
+    nav ul{list-style:none;display:flex;align-items:center;gap:26px}
+    nav a{color:#475569;font-weight:600;font-size:.95rem}
+    nav a:hover{color:var(--primary)}
+    .nav-cta{
+      padding:11px 18px;
+      border-radius:12px;
+      background:var(--primary);
+      color:#fff !important;
+    }
+    .menu-btn{
+      display:none;border:0;background:transparent;font-size:1.6rem;cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      padding:88px 0 76px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(20,184,166,.15), transparent 28%),
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,.12), transparent 28%),
+        var(--bg);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:56px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border:1px solid #dbe5f5;
+      background:#fff;
+      border-radius:999px;
+      color:var(--primary);
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    h1{
+      font-size:clamp(2.5rem,5vw,4.6rem);
+      line-height:1.05;
+      letter-spacing:-.055em;
+      margin-bottom:22px;
+    }
+    .hero h1 span{
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      font-size:1.12rem;
+      color:var(--muted);
+      max-width:650px;
+      margin-bottom:30px;
+    }
+    .actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 20px;border-radius:13px;
+      font-weight:800;border:1px solid transparent;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+    .btn-secondary{background:#fff;border-color:var(--border);color:var(--text)}
+    .btn-secondary:hover{border-color:#c8d3e3;transform:translateY(-2px)}
+    .hero-card{
+      position:relative;
+      min-height:430px;
+      border-radius:28px;
+      background:linear-gradient(145deg,#0f172a,#1e3a8a);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      padding:34px;
+      color:#fff;
+    }
+    .hero-card:before,.hero-card:after{
+      content:"";position:absolute;border-radius:50%;filter:blur(2px);
+    }
+    .hero-card:before{
+      width:260px;height:260px;right:-90px;top:-80px;
+      background:rgba(20,184,166,.30);
+    }
+    .hero-card:after{
+      width:220px;height:220px;left:-100px;bottom:-100px;
+      background:rgba(37,99,235,.38);
+    }
+    .dashboard{
+      position:relative;z-index:1;
+      height:100%;display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .dash-top{display:flex;justify-content:space-between;align-items:center}
+    .dash-title{font-size:1rem;font-weight:800}
+    .status{
+      font-size:.75rem;background:rgba(255,255,255,.12);
+      padding:6px 10px;border-radius:999px;
+    }
+    .mock-window{
+      margin-top:28px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:18px;padding:18px;
+    }
+    .mock-row{display:flex;gap:12px;margin-bottom:14px}
+    .metric{
+      flex:1;background:rgba(255,255,255,.08);
+      padding:15px;border-radius:14px;
+    }
+    .metric small{color:#cbd5e1}
+    .metric strong{display:block;font-size:1.4rem;margin-top:4px}
+    .chart{
+      height:120px;border-radius:14px;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+      position:relative;overflow:hidden;
+    }
+    .chart svg{width:100%;height:100%}
+
+    /* Sections */
+    section{padding:88px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 48px}
+    .section-head h2{
+      font-size:clamp(2rem,4vw,3rem);
+      line-height:1.1;letter-spacing:-.04em;margin-bottom:14px;
+    }
+    .section-head p{color:var(--muted);font-size:1.03rem}
+
+    .problem-grid,.feature-grid,.process-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+    }
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 8px 25px rgba(20,33,61,.04);
+    }
+    .icon{
+      width:48px;height:48px;border-radius:14px;
+      display:grid;place-items:center;
+      background:#eff6ff;color:var(--primary);
+      font-size:1.35rem;margin-bottom:18px;
+      font-weight:900;
+    }
+    .card h3{font-size:1.15rem;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:.96rem}
+
+    .solution{
+      background:#0f172a;color:#fff;
+    }
+    .solution .section-head p{color:#cbd5e1}
+    .solution-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;
+    }
+    .solution-card{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      border-radius:var(--radius);
+      padding:30px;
+    }
+    .solution-card h3{margin-bottom:10px}
+    .solution-card p{color:#cbd5e1}
+    .check-list{list-style:none;margin-top:20px;display:grid;gap:13px}
+    .check-list li{display:flex;gap:10px;color:#e2e8f0}
+    .check{color:#5eead4;font-weight:900}
+
+    .uvp{
+      padding:28px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#eff6ff,#ecfeff);
+      border:1px solid #dbeafe;
+      margin-top:28px;
+      text-align:center;
+    }
+    .uvp strong{font-size:1.25rem;line-height:1.45;display:block}
+
+    .steps{counter-reset:step}
+    .step{position:relative;padding-top:58px}
+    .step-number{
+      position:absolute;top:0;left:0;
+      width:42px;height:42px;border-radius:12px;
+      display:grid;place-items:center;
+      background:var(--primary);color:#fff;font-weight:900;
+    }
+
+    /* CTA */
+    .cta{
+      padding:88px 0;
+      background:linear-gradient(135deg,#eff6ff,#f0fdfa);
+    }
+    .cta-box{
+      background:#fff;border:1px solid var(--border);
+      border-radius:28px;padding:50px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:30px;box-shadow:var(--shadow);
+    }
+    .cta-box h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.04em}
+    .cta-box p{color:var(--muted);margin-top:10px;max-width:650px}
+
+    /* Contact */
+    .contact-grid{
+      display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;
+    }
+    .contact-info .item{
+      display:flex;gap:14px;margin-top:20px;
+      padding:16px;border-radius:14px;background:#f8fafc;
+    }
+    .contact-form{display:grid;gap:14px}
+    label{font-weight:700;font-size:.9rem}
+    input,textarea{
+      width:100%;margin-top:6px;
+      border:1px solid var(--border);border-radius:12px;
+      padding:13px 14px;font:inherit;outline:none;
+      background:#fff;
+    }
+    input:focus,textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px #dbeafe}
+    textarea{min-height:130px;resize:vertical}
+    .form-note{font-size:.82rem;color:var(--muted)}
+
+    footer{
+      background:#0b1120;color:#cbd5e1;padding:32px 0;
+    }
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footer-brand{color:#fff;font-weight:800}
+    .footer-small{font-size:.85rem}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid,.solution-grid,.contact-grid{grid-template-columns:1fr}
+      .problem-grid,.feature-grid,.process-grid{grid-template-columns:1fr 1fr}
+      .hero{padding-top:60px}
+      .hero-card{min-height:360px}
+      .cta-box{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:700px){
+      nav ul{
+        display:none;position:absolute;left:4%;right:4%;top:68px;
+        background:#fff;border:1px solid var(--border);
+        border-radius:16px;padding:16px;box-shadow:var(--shadow);
+        flex-direction:column;align-items:stretch;
+      }
+      nav ul.open{display:flex}
+      nav li a{display:block;padding:10px}
+      .menu-btn{display:block}
+      .nav-cta{display:none}
+      .problem-grid,.feature-grid,.process-grid{grid-template-columns:1fr}
+      section{padding:68px 0}
+      .cta-box{padding:32px 24px}
+      .footer-row{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Zaika Solutions home">
+        <span class="logo-mark">Z</span>
+        <span>Zaika Solutions Ltd</span>
+      </a>
+
+      <nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <ul id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn nav-cta" href="#contact">Discuss Your Needs</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Software Modernization for Growing Businesses</div>
+          <h1>Modernize your software. <span>Grow with confidence.</span></h1>
+          <p>
+            Zaika Solutions Ltd helps businesses move beyond outdated software systems
+            with customized, scalable and cloud-ready solutions designed around their needs.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Book a Discussion</a>
+            <a class="btn btn-secondary" href="#solution">Explore Our Solution</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Illustration of a modern software dashboard">
+          <div class="dashboard">
+            <div class="dash-top">
+              <div class="dash-title">Modern Business Platform</div>
+              <div class="status">Cloud-ready</div>
+            </div>
+
+            <div class="mock-window">
+              <div class="mock-row">
+                <div class="metric"><small>Efficiency</small><strong>↑</strong></div>
+                <div class="metric"><small>Scalability</small><strong>Ready</strong></div>
+              </div>
+              <div class="chart">
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,125 60,105 120,115 180,75 240,88 300,48 360,62 430,25 500,38"
+                            fill="none" stroke="#5eead4" stroke-width="5"/>
+                  <polyline points="0,149 0,125 60,105 120,115 180,75 240,88 300,48 360,62 430,25 500,38 500,149"
+                            fill="rgba(94,234,212,.12)" stroke="none"/>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <strong>Customized • Scalable • Cloud-Ready</strong>
+              <p style="color:#cbd5e1;margin-top:5px;font-size:.9rem">
+                Built to support modernization and business growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="section-head">
+          <h2>Is outdated software slowing your business?</h2>
+          <p>
+            Legacy systems can make everyday operations harder and can hold businesses
+            back from adopting modern technology.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="card">
+            <div class="icon">₹</div>
+            <h3>High Maintenance Costs</h3>
+            <p>Older systems can require significant ongoing effort and expense to maintain.</p>
+          </article>
+          <article class="card">
+            <div class="icon">⚙</div>
+            <h3>Difficult to Upgrade</h3>
+            <p>Outdated infrastructure can make modernization and system improvements difficult.</p>
+          </article>
+          <article class="card">
+            <div class="icon">↗</div>
+            <h3>Growth Challenges</h3>
+            <p>Businesses need software that can scale and adapt as their requirements change.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution" id="solution">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our solution</h2>
+          <p>
+            We help businesses modernize legacy systems through custom-built software
+            designed for scalability and cloud readiness.
+          </p>
+        </div>
+
+        <div class="solution-grid">
+          <div class="solution-card">
+            <h3>Customized Software</h3>
+            <p>
+              Solutions are designed around the specific needs of the business rather
+              than forcing the business into a one-size-fits-all system.
+            </p>
+            <ul class="check-list">
+              <li><span class="check">✓</span> Tailored to business requirements</li>
+              <li><span class="check">✓</span> Modern technology approach</li>
+              <li><span class="check">✓</span> Designed for practical business use</li>
+            </ul>
+          </div>
+
+          <div class="solution-card">
+            <h3>Scalable & Cloud-Ready</h3>
+            <p>
+              Modern architecture helps businesses prepare for changing needs and
+              future growth.
+            </p>
+            <ul class="check-list">
+              <li><span class="check">✓</span> Scalable software solutions</li>
+              <li><span class="check">✓</span> Cloud-ready approach</li>
+              <li><span class="check">✓</span> Focus on efficiency and modernization</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="uvp">
+          <strong>
+            Affordable, scalable, cloud-ready software that helps businesses modernize
+            legacy systems, improve efficiency, and grow with less disruption.
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why modernize with Zaika Solutions?</h2>
+          <p>Move from legacy-system limitations toward software that supports your business goals.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="icon">✓</div>
+            <h3>Improve Efficiency</h3>
+            <p>Modern software can simplify processes and reduce the challenges associated with outdated systems.</p>
+          </article>
+          <article class="card">
+            <div class="icon">☁</div>
+            <h3>Cloud Ready</h3>
+            <p>Prepare your business for modern cloud-based technology and future requirements.</p>
+          </article>
+          <article class="card">
+            <div class="icon">↗</div>
+            <h3>Support Growth</h3>
+            <p>Use scalable software that can adapt as your business and operational needs grow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#fff;">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>A simple approach to moving from outdated systems toward modern software.</p>
+        </div>
+
+        <div class="process-grid steps">
+          <article class="card step">
+            <div class="step-number">1</div>
+            <h3>Understand</h3>
+            <p>Identify your existing software challenges, business requirements and modernization needs.</p>
+          </article>
+          <article class="card step">
+            <div class="step-number">2</div>
+            <h3>Customize</h3>
+            <p>Design a software approach around your specific requirements and workflows.</p>
+          </article>
+          <article class="card step">
+            <div class="step-number">3</div>
+            <h3>Modernize</h3>
+            <p>Move toward a scalable, cloud-ready solution that supports efficiency and growth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Ready to modernize your business?</h2>
+            <p>
+              Talk to Zaika Solutions Ltd about your outdated software systems
+              and explore a customized path toward modernization.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="#contact">Contact Zaika Solutions</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Let's discuss your software needs</h2>
+          <p>
+            Share your requirements and start a conversation about software modernization.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-info">
+            <h3>Zaika Solutions Ltd</h3>
+            <p style="color:var(--muted);margin-top:8px;">
+              Modern software solutions for businesses using outdated or inefficient systems.
+            </p>
+
+            <div class="item">
+              <span>💻</span>
+              <div>
+                <strong>Service</strong>
+                <p style="color:var(--muted);">Software modernization and custom software solutions</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <span>☁</span>
+              <div>
+                <strong>Technology focus</strong>
+                <p style="color:var(--muted);">Scalable and cloud-ready software</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <span>📩</span>
+              <div>
+                <strong>Next step</strong>
+                <p style="color:var(--muted);">Use the form to start a discussion</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <form class="contact-form" id="contactForm">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="your@email.com" required />
+              </div>
+              <div>
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" placeholder="Tell us about your current software challenge..." required></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Send Enquiry</button>
+              <p class="form-note">
+                Demo form for the project website. Connect it to your preferred email/form service before using it for real enquiries.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div class="footer-brand">Zaika Solutions Ltd</div>
+      <div class="footer-small">© <span id="year"></span> Zaika Solutions Ltd. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navList = document.getElementById("navList");
+
+    menuBtn.addEventListener("click", () => {
+      navList.classList.toggle("open");
+    });
+
+    document.querySelectorAll("#navList a").forEach(link => {
+      link.addEventListener("click", () => navList.classList.remove("open"));
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      alert(`Thank you${name ? ", " + name : ""}! Your enquiry has been recorded on this demo page. Connect the form to an email/form service to receive real submissions.`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>
